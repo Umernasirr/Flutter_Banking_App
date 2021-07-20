@@ -12,32 +12,41 @@ class CardItem extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.all(16.0),
-      padding: EdgeInsets.all(40.0),
+      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 26),
       decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(16.0),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 1,
-              blurRadius: 2,
-              offset: Offset(1.0, 1.0),
-              color: Colors.cyan,
-            )
-          ]),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [0.1, 0.8],
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).accentColor,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(40.0),
+      ),
       child: Container(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Card"),
+          Icon(
+            Icons.credit_card,
+            color: Colors.white54,
+            size: 40,
+          ),
           SizedBox(
             height: 16,
           ),
           Text(
             myCard.cardNo,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
           ),
           SizedBox(
-            height: 32,
+            height: 8,
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,10 +66,10 @@ class CardItem extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                width: 100,
+                width: 119,
               ),
               CircleAvatar(
-                radius: 30,
+                radius: 36,
                 backgroundColor: Colors.transparent,
                 child: Image.asset(myCard.type == 0
                     ? 'assets/images/mastercard.png'
